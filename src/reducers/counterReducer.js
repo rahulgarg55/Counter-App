@@ -1,7 +1,8 @@
-import { INCREMENT, DECREMENT } from "../actions/counterActions";
+import { INCREMENT, DECREMENT, SET_NAME } from "../actions/counterActions";
 
 const initialState = {
-    count: 0
+    count: 0,
+    name:'Rahul Garg',
 };
 
 const counterReducer = (state = initialState, action) =>{
@@ -12,6 +13,8 @@ const counterReducer = (state = initialState, action) =>{
             case DECREMENT:
                 console.log(action);
                 return {...state, count: state.count-1};
+                case SET_NAME:
+                    return {...state, name:action.payload};
                 default:
                     return state;
     }
