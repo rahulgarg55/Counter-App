@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import counterReducer from './reducers/counterReducer';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
+const store = createStore(counterReducer);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+ <Provider store = {store}>  
+  <App />
+ </Provider>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+//Provider component is a special wrapper that makes the redux store available to all the components.
+// it acts as a bridge between react and redux. 
+// store is basically redux store which holds the global state of our app.
